@@ -1,36 +1,44 @@
-import { createFileRoute } from '@tanstack/react-router'
-import logo from '../logo.svg'
-import '../App.css'
+import { TowerCard } from "@/components/tower-card";
+import { towers } from "@/data/dummy-data";
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/')({
-  component: App,
-})
+import { motion } from "framer-motion";
 
-function App() {
+export const Route = createFileRoute("/")({
+  component: TowerOverviewComponent,
+});
+
+function TowerOverviewComponent() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/routes/index.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-12 px-4"
+    >
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          Learn React
-        </a>
-        <a
-          className="App-link"
-          href="https://tanstack.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn TanStack
-        </a>
-      </header>
-    </div>
-  )
+          <h1 className="text-5xl font-bold text-gray-900 mb-4">
+            Premium Residential Towers
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Discover your perfect home among our collection of luxury
+            residential towers, each offering unique amenities and breathtaking
+            views.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {towers.map((tower, index) => (
+            <TowerCard key={tower.id} tower={tower} index={index} />
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
 }

@@ -1,18 +1,21 @@
-import { defineConfig } from 'vite'
-import viteReact from '@vitejs/plugin-react'
-import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
-import { resolve } from 'node:path'
+import tailwindcss from "@tailwindcss/vite";
+import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
+import viteReact from "@vitejs/plugin-react";
+// @ts-expect-error path is not found
+import path from "path";
+import { defineConfig } from "vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [TanStackRouterVite({ autoCodeSplitting: true }), viteReact()],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-  },
+  plugins: [
+    TanStackRouterVite({ autoCodeSplitting: true }),
+    viteReact(),
+    tailwindcss(),
+  ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src'),
+      // @ts-expect-error path is not found
+      "@": path.resolve(__dirname, "./src"),
     },
   },
-})
+});

@@ -9,38 +9,100 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TowersRouteImport } from './routes/_towers'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TowersTowersTowerIdIndexRouteImport } from './routes/_towers/towers/$towerId/index'
+import { Route as TowersTowersTowerIdFloorsFloorIdIndexRouteImport } from './routes/_towers/towers/$towerId/floors/$floorId/index'
+import { Route as TowersTowersTowerIdFloorsFloorIdApartmentsApartmentIdIndexRouteImport } from './routes/_towers/towers/$towerId/floors/$floorId/apartments/$apartmentId/index'
 
+const TowersRoute = TowersRouteImport.update({
+  id: '/_towers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TowersTowersTowerIdIndexRoute =
+  TowersTowersTowerIdIndexRouteImport.update({
+    id: '/towers/$towerId/',
+    path: '/towers/$towerId/',
+    getParentRoute: () => TowersRoute,
+  } as any)
+const TowersTowersTowerIdFloorsFloorIdIndexRoute =
+  TowersTowersTowerIdFloorsFloorIdIndexRouteImport.update({
+    id: '/towers/$towerId/floors/$floorId/',
+    path: '/towers/$towerId/floors/$floorId/',
+    getParentRoute: () => TowersRoute,
+  } as any)
+const TowersTowersTowerIdFloorsFloorIdApartmentsApartmentIdIndexRoute =
+  TowersTowersTowerIdFloorsFloorIdApartmentsApartmentIdIndexRouteImport.update({
+    id: '/towers/$towerId/floors/$floorId/apartments/$apartmentId/',
+    path: '/towers/$towerId/floors/$floorId/apartments/$apartmentId/',
+    getParentRoute: () => TowersRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '': typeof TowersRouteWithChildren
+  '/towers/$towerId': typeof TowersTowersTowerIdIndexRoute
+  '/towers/$towerId/floors/$floorId': typeof TowersTowersTowerIdFloorsFloorIdIndexRoute
+  '/towers/$towerId/floors/$floorId/apartments/$apartmentId': typeof TowersTowersTowerIdFloorsFloorIdApartmentsApartmentIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '': typeof TowersRouteWithChildren
+  '/towers/$towerId': typeof TowersTowersTowerIdIndexRoute
+  '/towers/$towerId/floors/$floorId': typeof TowersTowersTowerIdFloorsFloorIdIndexRoute
+  '/towers/$towerId/floors/$floorId/apartments/$apartmentId': typeof TowersTowersTowerIdFloorsFloorIdApartmentsApartmentIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_towers': typeof TowersRouteWithChildren
+  '/_towers/towers/$towerId/': typeof TowersTowersTowerIdIndexRoute
+  '/_towers/towers/$towerId/floors/$floorId/': typeof TowersTowersTowerIdFloorsFloorIdIndexRoute
+  '/_towers/towers/$towerId/floors/$floorId/apartments/$apartmentId/': typeof TowersTowersTowerIdFloorsFloorIdApartmentsApartmentIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | ''
+    | '/towers/$towerId'
+    | '/towers/$towerId/floors/$floorId'
+    | '/towers/$towerId/floors/$floorId/apartments/$apartmentId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | ''
+    | '/towers/$towerId'
+    | '/towers/$towerId/floors/$floorId'
+    | '/towers/$towerId/floors/$floorId/apartments/$apartmentId'
+  id:
+    | '__root__'
+    | '/'
+    | '/_towers'
+    | '/_towers/towers/$towerId/'
+    | '/_towers/towers/$towerId/floors/$floorId/'
+    | '/_towers/towers/$towerId/floors/$floorId/apartments/$apartmentId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  TowersRoute: typeof TowersRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_towers': {
+      id: '/_towers'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof TowersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +110,50 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_towers/towers/$towerId/': {
+      id: '/_towers/towers/$towerId/'
+      path: '/towers/$towerId'
+      fullPath: '/towers/$towerId'
+      preLoaderRoute: typeof TowersTowersTowerIdIndexRouteImport
+      parentRoute: typeof TowersRoute
+    }
+    '/_towers/towers/$towerId/floors/$floorId/': {
+      id: '/_towers/towers/$towerId/floors/$floorId/'
+      path: '/towers/$towerId/floors/$floorId'
+      fullPath: '/towers/$towerId/floors/$floorId'
+      preLoaderRoute: typeof TowersTowersTowerIdFloorsFloorIdIndexRouteImport
+      parentRoute: typeof TowersRoute
+    }
+    '/_towers/towers/$towerId/floors/$floorId/apartments/$apartmentId/': {
+      id: '/_towers/towers/$towerId/floors/$floorId/apartments/$apartmentId/'
+      path: '/towers/$towerId/floors/$floorId/apartments/$apartmentId'
+      fullPath: '/towers/$towerId/floors/$floorId/apartments/$apartmentId'
+      preLoaderRoute: typeof TowersTowersTowerIdFloorsFloorIdApartmentsApartmentIdIndexRouteImport
+      parentRoute: typeof TowersRoute
+    }
   }
 }
 
+interface TowersRouteChildren {
+  TowersTowersTowerIdIndexRoute: typeof TowersTowersTowerIdIndexRoute
+  TowersTowersTowerIdFloorsFloorIdIndexRoute: typeof TowersTowersTowerIdFloorsFloorIdIndexRoute
+  TowersTowersTowerIdFloorsFloorIdApartmentsApartmentIdIndexRoute: typeof TowersTowersTowerIdFloorsFloorIdApartmentsApartmentIdIndexRoute
+}
+
+const TowersRouteChildren: TowersRouteChildren = {
+  TowersTowersTowerIdIndexRoute: TowersTowersTowerIdIndexRoute,
+  TowersTowersTowerIdFloorsFloorIdIndexRoute:
+    TowersTowersTowerIdFloorsFloorIdIndexRoute,
+  TowersTowersTowerIdFloorsFloorIdApartmentsApartmentIdIndexRoute:
+    TowersTowersTowerIdFloorsFloorIdApartmentsApartmentIdIndexRoute,
+}
+
+const TowersRouteWithChildren =
+  TowersRoute._addFileChildren(TowersRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  TowersRoute: TowersRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
