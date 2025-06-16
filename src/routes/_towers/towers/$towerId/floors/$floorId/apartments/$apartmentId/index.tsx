@@ -1,25 +1,21 @@
+import { Header } from "@/components/header";
 import { ImageCarousel } from "@/components/image-carousel";
 import { Button } from "@/components/ui/button";
-import {
-  generateApartmentLayouts,
-  getLayoutById,
-  images,
-} from "@/data/dummy-data";
+import { getLayoutById, images } from "@/data/dummy-data";
 import {
   createFileRoute,
-  Link,
   notFound,
   useLoaderData,
   useParams,
 } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
-  ArrowLeft,
   Bath,
   Bed,
   Calendar,
   Check,
   Home,
+  Layers,
   MapPin,
   Square,
 } from "lucide-react";
@@ -29,10 +25,7 @@ export const Route = createFileRoute(
 )({
   component: RouteComponent,
   loader: ({ params }) => {
-    console.log(params, "params");
-    const apartmentLayouts = generateApartmentLayouts(params.floorId, 4);
     const layout = getLayoutById(params.floorId, params.apartmentId);
-    console.log(apartmentLayouts, "apartmentLayouts");
     if (!layout) {
       notFound();
     }
@@ -67,31 +60,17 @@ function RouteComponent() {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <motion.header
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200/50 sticky top-0 z-40"
-      >
-        <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center gap-4">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              <Link
-                to={`/towers/$towerId/floors/$floorId`}
-                params={{ towerId: params.towerId!, floorId: params.floorId! }}
-                className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group"
-              >
-                <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
-                <span>Back to apartments</span>
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </motion.header>
+      <Header
+        backButton={{
+          to: `/towers/$towerId/floors/$floorId`,
+          params: { towerId: params.towerId!, floorId: params.floorId! },
+          text: "Back to apartments",
+          className: "max-w-[1350px]",
+        }}
+        title={layout?.name!}
+        description={layout?.description!}
+        icon={<Layers className="h-6 w-6 text-white" />}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 py-10">
         <div className="grid lg:grid-cols-2 gap-12">

@@ -23,7 +23,7 @@ function TowerOverviewComponent() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
             Premium Residential Towers
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">

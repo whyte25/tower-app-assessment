@@ -1,0 +1,10 @@
+# Netlify configuration for SPA routing (React, TanStack Router)
+# This will prevent 404 errors on page refresh by redirecting all requests to index.html
+[build]
+  publish = "dist"
+  command = "bun run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
