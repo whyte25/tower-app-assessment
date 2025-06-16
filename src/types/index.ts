@@ -28,6 +28,7 @@ export interface ApartmentLayout {
   price: string;
   isAvailable: boolean;
   description: string;
+  amenities: string[];
 }
 
 export type ViewType = "towers" | "floors" | "layouts" | "details";

@@ -24,7 +24,7 @@ export const towers: Tower[] = [
     id: "tower-c",
     name: "Tower C - Vista",
     description:
-      "Elegant residences with sophisticated design and premium finishes",
+      "Elegant design with high-end appliances and a cozy fireplace, perfect for relaxation",
     image:
       "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1000&h=1000&fit=crop",
     floors: 18,
@@ -86,7 +86,17 @@ export const generateApartmentLayouts = (
       price: formatCurrency(Math.floor(Math.random() * 500000) + 300000),
       isAvailable: Math.random() > 0.3,
       description:
-        "Compact yet luxurious studio apartment with modern amenities",
+        "Spacious layout with modern finishes and a private balcony with stunning city views",
+      amenities: [
+        "Central Air Conditioning",
+        "Hardwood Floors",
+        "In-Unit Laundry",
+        "Stainless Steel Appliances",
+        "Granite Countertops",
+        "Walk-in Closet",
+        "Private Balcony",
+        "High Ceilings",
+      ],
     };
   });
 };

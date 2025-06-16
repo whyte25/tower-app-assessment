@@ -5,6 +5,7 @@ import ReactDOM from "react-dom/client";
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen";
 
+import ErrorMessage from "./components/error-message";
 import reportWebVitals from "./reportWebVitals.ts";
 import "./styles.css";
 
@@ -16,6 +17,12 @@ const router = createRouter({
   scrollRestoration: true,
   defaultStructuralSharing: true,
   defaultPreloadStaleTime: 0,
+  defaultNotFoundComponent: () => (
+    <ErrorMessage
+      title="Page Not Found"
+      message="The page you are looking for does not exist."
+    />
+  ),
 });
 
 // Register the router instance for type safety

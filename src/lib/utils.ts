@@ -12,8 +12,12 @@ export const formatCurrency = (amount: string | number) => {
   }).format(Number(amount));
 };
 
-export const removeDashes = (str: string) => {
-  return str.replace(/-/g, " ");
+export const formatSlug = (str: string) => {
+  if (!str) return "";
+  return str
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 };
 
 export const getNumber = (str: string) => {
