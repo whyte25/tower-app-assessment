@@ -2,7 +2,7 @@ import type { Tower } from "@/types";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { MapPin, Users } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 export const TowerCard = ({
   tower,

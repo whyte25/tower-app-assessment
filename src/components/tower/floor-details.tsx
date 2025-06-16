@@ -1,6 +1,6 @@
 import { Header } from "@/components/header";
-import LayoutCard from "@/components/layout-card";
-import { getNumber, formatSlug } from "@/lib/utils";
+import LayoutCard from "@/components/tower/layout-card";
+import { formatSlug, getNumber } from "@/lib/utils";
 import type { ApartmentLayout } from "@/types";
 import { motion } from "framer-motion";
 import { Building2, Eye, Layers } from "lucide-react";
@@ -11,7 +11,11 @@ interface FloorDetailsProps {
   floorId: string;
 }
 
-export function FloorDetails({ apartmentLayouts, towerId, floorId }: FloorDetailsProps) {
+export function FloorDetails({
+  apartmentLayouts,
+  towerId,
+  floorId,
+}: FloorDetailsProps) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <Header
@@ -36,9 +40,7 @@ export function FloorDetails({ apartmentLayouts, towerId, floorId }: FloorDetail
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div className="flex flex-col items-center">
               <Building2 className="h-12 w-12 mb-4 opacity-80" />
-              <h3 className="text-2xl font-bold mb-2">
-                {formatSlug(towerId)}
-              </h3>
+              <h3 className="text-2xl font-bold mb-2">{formatSlug(towerId)}</h3>
               <p className="opacity-90">Premium Tower</p>
             </div>
             <div className="flex flex-col items-center">
@@ -75,8 +77,8 @@ export function FloorDetails({ apartmentLayouts, towerId, floorId }: FloorDetail
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Explore our carefully designed apartment layouts on{" "}
-            {formatSlug(floorId)}. Each unit offers modern amenities,
-            thoughtful design, and breathtaking views.
+            {formatSlug(floorId)}. Each unit offers modern amenities, thoughtful
+            design, and breathtaking views.
           </p>
         </motion.div>
 

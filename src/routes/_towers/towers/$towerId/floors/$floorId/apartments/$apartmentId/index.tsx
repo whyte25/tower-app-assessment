@@ -1,6 +1,6 @@
-import { ApartmentDetails } from "@/components/apartment-details";
 import ErrorMessage from "@/components/error-message";
 import { Header } from "@/components/header";
+import { ApartmentDetails } from "@/components/tower/apartment-details";
 import { getLayoutById } from "@/data/dummy-data";
 import { formatSlug } from "@/lib/utils";
 import { createFileRoute, notFound } from "@tanstack/react-router";

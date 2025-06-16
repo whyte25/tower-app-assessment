@@ -1,5 +1,5 @@
-import FloorCard from "@/components/floor-card";
 import { Header } from "@/components/header";
+import FloorCard from "@/components/tower/floor-card";
 import type { Floor, Tower } from "@/types";
 import { motion } from "framer-motion";
 import { Building2, MapPin, Users } from "lucide-react";
@@ -28,7 +28,7 @@ export function TowerDetails({ tower, floors }: TowerDetailsProps) {
           className="object-cover w-full object-top "
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-        <div className="absolute bottom-8 left-4 sm:left-8 text-white">
+        <div className="absolute bottom-8 left-4 sm:left-8 lg:left-25.5 text-white">
           <div className="flex flex-wrap items-center gap-6 mb-4">
             <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
               <Building2 className="h-5 w-5" />
@@ -36,9 +36,7 @@ export function TowerDetails({ tower, floors }: TowerDetailsProps) {
             </div>
             <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
               <Users className="h-5 w-5" />
-              <span className="font-medium">
-                {tower.floors * 4} Units
-              </span>
+              <span className="font-medium">{tower.floors * 4} Units</span>
             </div>
             <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
               <MapPin className="h-5 w-5" />

@@ -1,5 +1,5 @@
 import ErrorMessage from "@/components/error-message";
-import { TowerDetails } from "@/components/tower-details";
+import { TowerDetails } from "@/components/tower/tower-details";
 import { generateFloors, getTowerById } from "@/data/dummy-data";
 import { createFileRoute, notFound } from "@tanstack/react-router";
 

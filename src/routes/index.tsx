@@ -1,4 +1,4 @@
-import { TowerCard } from "@/components/tower-card";
+import { TowerCard } from "@/components/tower/tower-card";
 import { towers } from "@/data/dummy-data";
 import { createFileRoute } from "@tanstack/react-router";
 
