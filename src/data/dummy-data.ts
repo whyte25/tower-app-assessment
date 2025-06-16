@@ -73,7 +73,7 @@ export const generateApartmentLayouts = (
     const bathrooms = Math.max(1, Math.floor(bedrooms * 0.75));
 
     return {
-      id: `${floorId}-unit-${index + 1}`,
+      id: `unit-${index + 1}`,
       floorId,
       name: `Unit ${String.fromCharCode(65 + index)}`,
       area: Math.floor(Math.random() * 1000) + 500,
@@ -111,7 +111,5 @@ export const getLayoutById = (
   const layouts = generateApartmentLayouts(floorId, 4);
   const unitNumber = Number(layoutId.replace(/\D/g, ""));
 
-  return layouts.find(
-    (layout) => layout.id === `${floorId}-unit-${unitNumber}`
-  );
+  return layouts.find((layout) => layout.id === `unit-${unitNumber}`);
 };

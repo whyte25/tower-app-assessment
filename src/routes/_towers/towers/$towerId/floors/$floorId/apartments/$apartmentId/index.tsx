@@ -42,7 +42,7 @@ function RouteComponent() {
       <Header
         backButton={{
           to: `/towers/$towerId/floors/$floorId`,
-          params: { towerId, floorId },
+          params: { towerId: towerId!, floorId: floorId! },
           text: "Back to apartments",
         }}
         containerClassName="max-w-[1350px]"

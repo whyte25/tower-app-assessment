@@ -4,6 +4,14 @@ import { cn } from "@/lib/utils";
 import type { ApartmentLayout } from "@/types";
 import { motion } from "framer-motion";
 import { Bath, Bed, Calendar, Check, Home, MapPin, Square } from "lucide-react";
+import { Button } from "../ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../ui/carousel";
 
 interface ApartmentDetailsProps {
   layout: ApartmentLayout;
@@ -59,17 +67,30 @@ export function ApartmentDetails({
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="hidden md:grid grid-cols-5 gap-4"
+            className="w-full"
           >
-            {images?.map((img) => (
-              <div key={img} className="relative">
-                <img
-                  src={img}
-                  alt={img}
-                  className="w-full h-56 object-cover rounded-lg"
-                />
+            <Carousel className="w-full px-4">
+              <CarouselContent>
+                {images?.map((img) => (
+                  <CarouselItem
+                    key={img}
+                    className="basis-4/5 gap-2 sm:basis-2/5 lg:basis-2/4 xl:basis-2/5"
+                  >
+                    <div key={img} className="relative">
+                      <img
+                        src={img}
+                        alt={img}
+                        className="w-full h-56 object-cover rounded-lg"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="hover:text-custom-gray-400 text-custom-gray-300 mt-10 flex w-full items-center justify-end gap-2">
+                <CarouselPrevious className="static border-none text-white hover:text-white bg-black hover:bg-black/80" />
+                <CarouselNext className="static border-none text-white hover:text-white bg-black hover:bg-black/80" />
               </div>
-            ))}
+            </Carousel>
           </motion.div>
         </motion.div>
 
@@ -151,6 +172,18 @@ export function ApartmentDetails({
                 </li>
               ))}
             </ul>
+          </div>
+
+          <div className="space-y-4">
+            <Button
+              variant="outline"
+              className={`w-full `}
+              disabled={!layout?.isAvailable}
+            >
+              {layout?.isAvailable ? "Schedule a Tour" : "Unit Not Available"}
+            </Button>
+
+            <Button className="w-full">Request Information</Button>
           </div>
         </motion.div>
       </div>
