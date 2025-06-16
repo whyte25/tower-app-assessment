@@ -68,7 +68,7 @@ export function Header({
             <Link
               to={backButton.to}
               className={cn(
-                "flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors group",
+                "flex items-center gap-2 capitalize text-gray-600 hover:text-gray-900 transition-colors group",
                 backButton.className
               )}
             >
@@ -92,7 +92,7 @@ export function Header({
               {(title || description) && (
                 <div>
                   {title && (
-                    <h1 className="text-3xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                    <h1 className="text-3xl capitalize font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
                       {title}
                     </h1>
                   )}
