@@ -104,7 +104,7 @@ export function ApartmentDetails({
             <div className="flex items-center mb-2">
               <Home className="w-6 h-6 text-blue-600 mr-3" />
               <h1 className="text-3xl font-bold text-gray-900">
-                Unit {layout.name}
+                {layout.name}
               </h1>
             </div>
             <div className="flex items-center text-gray-600 mb-4">

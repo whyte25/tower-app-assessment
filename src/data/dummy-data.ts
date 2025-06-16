@@ -31,6 +31,9 @@ export const towers: Tower[] = [
   },
 ];
 
+export const getTowerById = (id: string): Tower | undefined =>
+  towers.find((tower) => tower.id === id);
+
 export const generateFloors = (
   towerId: string,
   totalFloors: number
@@ -100,9 +103,6 @@ export const generateApartmentLayouts = (
     };
   });
 };
-
-export const getTowerById = (id: string): Tower | undefined =>
-  towers.find((tower) => tower.id === id);
 
 export const getLayoutById = (
   floorId: string,
