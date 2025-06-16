@@ -65,7 +65,7 @@ export default function FloorCard({
                 className="h-full bg-blue-600 rounded-full"
                 initial={{ width: 0 }}
                 animate={{ width: `${Math.random() * 40 + 60}%` }}
-                transition={{ duration: 1, delay: index * 0.1 }}
+                transition={{ duration: 1, delay: index * 0.1 + Math.random() }}
               />
             </div>
             <div className="flex items-center justify-between">

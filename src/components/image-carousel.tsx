@@ -34,7 +34,7 @@ export const ImageCarousel = ({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogTrigger className="w-full">{children}</DialogTrigger>
-      <DialogContent className="h-full b max-h-[60%] w-full max-w-[90%] sm:max-w-[75%] md:max-h-[60%] lg:max-h-[80%]">
+      <DialogContent className="h-full b max-h-[60%] pb-10 w-full max-w-[90%] sm:max-w-[75%] md:max-h-[60%] lg:max-h-[80%]">
         <DialogHeader className="mx-auto w-full max-w-[915px] space-y-2">
           <DialogTitle className="text-xl font-semibold">
             {name} Images
@@ -57,8 +57,8 @@ export const ImageCarousel = ({
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="bg-primary hover:bg-primary -left-9 text-white hover:text-white sm:-left-12" />
-          <CarouselNext className="bg-primary hover:bg-primary -right-9 text-white hover:text-white sm:-right-12" />
+          <CarouselPrevious className="bg-black border-black hover:bg-black  -left-9 text-white hover:text-white sm:-left-12" />
+          <CarouselNext className="bg-black border-black hover:bg-black  -right-9 text-white hover:text-white sm:-right-12" />
         </Carousel>
       </DialogContent>
     </Dialog>
